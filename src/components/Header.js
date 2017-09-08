@@ -1,8 +1,9 @@
 import React from 'react'
+import { Navbar } from 'react-materialize'
 
 const Header = () => {
   return (
-    <h1>Hello World</h1>
+      <Navbar brand='Monsters Match' right></Navbar>
   )
 }
 
