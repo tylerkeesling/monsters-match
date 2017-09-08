@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './components/Header'
+import Monsters from './components/Monsters'
 
-// const baseURL = 'https://arcane-castle-78646.herokuapp.com'
-const baseURL = 'http://localhost:8080'
+const baseURL = 'https://arcane-castle-78646.herokuapp.com'
+// const baseURL = 'http://localhost:8080'
 
 class App extends Component {
   state = {
     monsters: []
   }
-  async ComponentDidMount() {
+  async componentDidMount() {
     const response = await fetch(`${baseURL}/api/v1/monsters`)
-    console.log(response);
+    const json = await response.json()
+    this.setState({ monsters: json.monsters })
   }
   render() {
     return (
-      <Header />
+      <div>
+        <Header />
+          <div className="container">
+            <Monsters monsters={ this.state.monsters } />
+          </div>
+      </div>
     )
   }
 }
